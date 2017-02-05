@@ -1,0 +1,314 @@
+#(+|-)(*)name([[key]])([=value=])([-desc-])([:data:])([~Flags~])
+#!header contents
+#$footer contents
+
++TextThemeStyle
+-Normal[-Normal-]
+-Outline[-Outline-]
+-Raised[-Raised-]
+-Sunken[-Sunken-]
+
++SpeakerId[:mp_speaker_id:]
+!extern "C" {
+!#include <audio/chmap.h>
+!}
+!#ifdef bool
+!#undef bool
+!#endif
+-FrontLeft[=(1 << 0)=][:MP_SPEAKER_ID_FL:]
+-FrontRight[=(1 << 1)=][:MP_SPEAKER_ID_FR:]
+-FrontCenter[=(1 << 2)=][:MP_SPEAKER_ID_FC:]
+-LowFrequency[=(1 << 3)=][:MP_SPEAKER_ID_LFE:]
+-BackLeft[=(1 << 4)=][:MP_SPEAKER_ID_BL:]
+-BackRight[=(1 << 5)=][:MP_SPEAKER_ID_BR:]
+-FrontLeftCenter[=(1 << 6)=][:MP_SPEAKER_ID_FLC:]
+-FrontRightCenter[=(1 << 7)=][:MP_SPEAKER_ID_FRC:]
+-BackCenter[=(1 << 8)=][:MP_SPEAKER_ID_BC:]
+-SideLeft[=(1 << 9)=][:MP_SPEAKER_ID_SL:]
+-SideRight[=(1 << 10)=][:MP_SPEAKER_ID_SR:]
+
++ChannelLayout[[channel]][:QByteArray:][-Channel Layout-]
+!#include "speakerid.hpp"
+-Mono[=((int)SpeakerId::FrontCenter)=][[1.0]][:"mono":][-Mono-]
+-*_2_0[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight)=][[2.0]][:"stereo":][-Stereo-]
+-_2_1[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::LowFrequency)=][[2.1]][:"2.1":][-2.1ch-]
+-_3_0[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter)=][[3.0]][:"3.0":][-3.0ch-]
+-_3_0_Back[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::BackCenter)=][[3.0(back)]][:"3.0(back)":][-3.0ch(Back)-]
+-_3_1[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::LowFrequency)=][[3.1]][:"3.1":][-3.1ch-]
+-_4_0[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight)=][[4.0]][:"quad":][-4.0ch-]
+-_4_0_Side[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight)=][[4.0(side)]][:"quad(side)":][-4.0ch(Side)-]
+-_4_0_Diamond[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackCenter)=][[4.0(diamond)]][:"4.0":][-4.0ch(Diamond)-]
+-_4_1[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight|(int)SpeakerId::LowFrequency)=][[4.1]][:"4.1":][-4.1ch-]
+-_4_1_Diamond[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackCenter|(int)SpeakerId::LowFrequency)=][[4.1(diamond)]][:"4.1":][-4.1ch(Diamond)-]
+-_5_0[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight)=][[5.0]][:"5.0":][-5.0ch-]
+-_5_0_Side[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight)=][[5.0(side)]][:"5.0(side)":][-5.0ch(Side)-]
+-_5_1[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight|(int)SpeakerId::LowFrequency)=][[5.1]][:"5.1":][-5.1ch-]
+-_5_1_Side[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight|(int)SpeakerId::LowFrequency)=][[5.1(side)]][:"5.1(side)":][-5.1ch(Side)-]
+-_6_0[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight)=][[6.0]][:"6.0":][-6.0ch-]
+-_6_0_Front[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontLeftCenter|(int)SpeakerId::FrontRightCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight)=][[6.0(front)]][:"6.0(front)":][-6.0ch(Front)-]
+-_6_0_Hex[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight)=][[6.0(hexagonal)]][:"hexagonal":][-6.0ch(Hexagonal)-]
+-_6_1[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight|(int)SpeakerId::LowFrequency)=][[6.1]][:"6.1":][-6.1ch-]
+-_6_1_Hex[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight|(int)SpeakerId::LowFrequency)=][[6.1(back)]][:"6.1(back)":][-6.1ch(Back)-]
+-_6_1_Front[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontLeftCenter|(int)SpeakerId::FrontRightCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight|(int)SpeakerId::LowFrequency)=][[6.1(front)]][:"6.1(front)":][-6.1ch(Front)-]
+-_7_0[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight)=][[7.0]][:"7.0":][-7.0ch-]
+-_7_0_Front[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::FrontLeftCenter|(int)SpeakerId::FrontRightCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight)=][[7.0(front)]][:"7.0(front)":][-7.0ch(Front)-]
+-_7_1[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight|(int)SpeakerId::LowFrequency)=][[7.1]][:"7.1":][-7.1ch-]
+-_7_1_Wide[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::FrontLeftCenter|(int)SpeakerId::FrontRightCenter|(int)SpeakerId::BackLeft|(int)SpeakerId::BackRight|(int)SpeakerId::LowFrequency)=][[7.1(wide)]][:"7.1(wide)":][-7.1ch(Wide)-]
+-_7_1_Side[=((int)SpeakerId::FrontLeft|(int)SpeakerId::FrontRight|(int)SpeakerId::FrontCenter|(int)SpeakerId::FrontLeftCenter|(int)SpeakerId::FrontRightCenter|(int)SpeakerId::SideLeft|(int)SpeakerId::SideRight|(int)SpeakerId::LowFrequency)=][[7.1(side)]][:"7.1(wide-side)":][-7.1ch(Side)-]
+$#include "enumflags.hpp"
+$constexpr inline auto operator & (SpeakerId lhs, ChannelLayout rhs) -> EnumAnd<SpeakerId>
+${ return SpeakerId((int)lhs & (int)rhs); }
+$constexpr inline auto operator & (ChannelLayout rhs, SpeakerId lhs) -> EnumAnd<SpeakerId>
+${ return SpeakerId((int)lhs & (int)rhs); }
+$constexpr inline auto operator & (EnumFlags<SpeakerId> lhs, ChannelLayout rhs) -> EnumFlags<SpeakerId>
+${ return lhs & EnumFlags<SpeakerId>((SpeakerId)rhs); }
+$constexpr inline auto operator & (ChannelLayout lhs, EnumFlags<SpeakerId> rhs) -> EnumFlags<SpeakerId>
+${ return rhs & EnumFlags<SpeakerId>((SpeakerId)lhs); }
+$constexpr inline auto operator | (SpeakerId lhs, SpeakerId rhs) -> EnumFlags<SpeakerId>
+${ return EnumFlags<SpeakerId>((int)lhs | (int)rhs); }
+
++ColorRange[[range]][-Color Range-][:ColorEnumData:]
+!#include "colorenumdata.hpp"
+-Auto[[auto]][-Auto-][:{"auto"_b, u"Autoselect"_q, u"--"_q}:]
+-Limited[[limited]][-Limited Range-][:{"limited"_b, u"TV"_q, u"Limited"_q}:]
+-Full[[full]][-Full Range-][:{"full"_b, u"PC"_q, u"Full"_q}:]
+
++ColorSpace[[space]][-Color Space-][:ColorEnumData:]
+!#include "colorenumdata.hpp"
+-Auto[[auto]][-Auto-][:{"auto"_b, u"Autoselect"_q, u"--"_q}:]
+-SMPTE240M[[smpte]][-SMPTE-240M-][:"SMPTE-240M"_b:]
+-BT601[[bt.601]][-BT.601(SD)-][:{"BT.601"_b, u"BT.601 (SD)"_q}:]
+-BT709[[bt.709]][-BT.709(HD)-][:{"BT.709"_b, u"BT.709 (HD)"_q}:]
+-BT2020NCL[[bt.2020-ncl]][-BT.2020-NCL(UHD)-][:{"BT.2020-NCL"_b, u"BT.2020-NCL (UHD)"_q}:]
+-BT2020CL[[bt.2020-cl]][-BT.2020-CL(UHD)-][:{"BT.2020-CL"_b, u"BT.2020-CL (UHD)"_q}:]
+-RGB[[rgb]][-RGB-][:"RGB"_b:]
+-XYZ[[xyz]][-XYZ-][:"XYZ"_b:]
+-YCgCo[[ycgco]][-YCgCo-][:"YCgCo"_b:]
+
+#+AdjustColor[[color]][:VideoColor:]
+#!#include "video/videocolor.hpp"
+#-Reset[[reset]][:{0, 0, 0, 0}:]
+#-BrightnessInc[[brightness+]][:{1, 0, 0, 0}:]
+#-BrightnessDec[[brightness-]][:{-1, 0, 0, 0}:]
+#-ContrastInc[[contrast+]][:{0, 1, 0, 0}:]
+#-ContrastDec[[contrast-]][:{0, -1, 0, 0}:]
+#-SaturationInc[[saturation+]][:{0, 0, 1, 0}:]
+#-SaturationDec[[saturation-]][:{0, 0, -1, 0}:]
+#-HueInc[[hue+]][:{0, 0, 0, 1}:]
+#-HueDec[[hue-]][:{0, 0, 0, -1}:]
+
++SubtitleDisplay[[display]][-Subtitle Display-]
+-OnLetterbox[[on-letterbox]][-Display on Letterbox-]
+-InVideo[[in-video]][-Display in Video-]
+
+#+WindowSize[[size]][-Window Size-][:int:]
+#-Proper[[proper]][-Proper Size-][:0:]
+#-_100[[100%]][-100%-][:1:]
+#-_200[[200%]][-200%-][:2:]
+#-_300[[300%]][-300%-][:3:]
+#-_400[[400%]][-400%-][:4:]
+#-Full[[full]][-Fullscreen-][:-1:]
+
++VideoRatio[[size]][-Size-][:qreal:]
+-Source[[source]][-Same as Source-][:-1.0:]
+-Window[[window]][-Same as Window-][:0.0:]
+-_4__3[[4:3]][-4:3 (TV)-][:4.0/3.0:]
+-_16__10[[16:10]][-16:10 (Wide Monitor)-][:16.0/10.0:]
+-_16__9[[16:9]][-16:9 (HDTV)-][:16.0/9.0:]
+-_1_85__1[[1.85:1]][-1.85:1 (Wide Vision)-][:1.85:]
+-_2_35__1[[2.35:1]][-2.35:1 (CinemaScope)-][:2.35:]
+
++Dithering[[dithering]][-Dithering-][:QByteArray:]
+-*None[[off]][-Off-][:"no":]
+-Fruit[[random]][-Random Dithering-][:"fruit":]
+-Ordered[[ordered]][-Ordered Dithering-][:"ordered":]
+
++DeintMode[[deinterlacing]][-Deinterlacing-]
+-None[[off]][-Off-]
+-*Auto[[auto]][-Auto-]
+
++Processor[~Processors~]
+-None[=0=]
+-CPU[=1=]
+-GPU[=2=]
+
++DeintMethod
+-None
+-Bob
+-LinearBob
+-CubicBob
+-Yadif
+
++Interpolator[:QByteArray:]
+-Bilinear[[bilinear]][-Bilinear-][:"bilinear"_b:]
+-Bicubic[[bicubic]][-Bicubic-][:"mitchell"_b:]
+-Spline[[spline]][-Spline-][:"spline"_b:]
+#-LanczosFast[[lanczos-fast]][-Fast Lanczos-]
+-Lanczos[[lanczos]][-Lanczos-][:"lanczos"_b:]
+-EwaLanczos[[ewa-lanczos]][-EWA Lanczos-][:"ewa_lanczos"_b:]
+-Sharpen[[sharpen]][-Unsharp Masking-][:"sharpen"_b:]
+
++AudioDriver
+-Auto
+-CoreAudio
+-PulseAudio
+-OSS
+-ALSA
+-JACK
+-PortAudio
+-OpenAL
+
++StaysOnTop[[stays-on-top]][-Stays on Top-]
+-None[[off]][-Off-]
+-*Playing[[playing]][-Playing-]	
+-Always[[always]][-Always-]
+
++SeekingStep
+-Step1
+-Step2
+-Step3
+
++GeneratePlaylist
+-Similar[-Add files which have similar names-]
+-Folder[-Add all files in the same folder-]
+#-None-Do not add any other files
+
++OpenMediaBehavior
+-Append[-Append the open media to the playlist-]
+-ClearAndAppend[-Clear the playlist and append the open media to the playlist-]
+-NewPlaylist[-Clear the playlist and generate new playlist-]
+
++AutoloadMode
+-Matched[-Files of which names match playing file name-]
+-Contain[-Files of which names contain playing file name-]
+-Folder[-All files in the matched folders-]
+#-None-Do not load any other subtitles
+
++AutoselectMode
+-Matched[-Subtitle which has the same name as that of playing file-]
+-First[-First subtitle from loaded ones-]
+-All[-All loaded subtitles-]
+-EachLanguage[-Each language subtitle-]
+
++KeyModifier
+-None[=Qt::NoModifier=]
+-Ctrl[=Qt::ControlModifier=]
+-Shift[=Qt::ShiftModifier=]
+-Alt[=Qt::AltModifier=]
+
++VerticalAlignment[[vertical-alignment]][:Qt::Alignment:]
+-Top[[top]][:Qt::AlignTop:][-Top-]
+-*Center[[v-center]][:Qt::AlignVCenter:][-Vertical Center-]
+-Bottom[[bottom]][:Qt::AlignBottom:][-Bottom-]
+
++HorizontalAlignment[[horizontal-alignment]][:Qt::Alignment:]
+-Left[[left]][:Qt::AlignLeft:][-Left-]
+-*Center[[h-center]][:Qt::AlignHCenter:][-Horizontal Center-]
+-Right[[right]][:Qt::AlignRight:][-Right-]
+
++MoveToward[[move]][:QPoint:]
+-Reset[[reset]][-Reset-][:{0, 0}:]
+-Upward[[up]][-Upward-][:{0, -1}:]
+-Downward[[down]][-Downward-][:{0, 1}:]
+-Leftward[[left]][-Leftward-][:{-1, 0}:]
+-Rightward[[right]][-Rightward-][:{1, 0}:]
+
++ChangeValue[:int:]
+-Reset[[reset]][-Reset-][:0:]
+-Increase[[increase]][-Increase %1-][:1:]
+-Decrease[[decrease]][-Decrease %1-][:-1:]
+
++VideoEffect[~VideoEffects~]
+-None[=0=]
+-FlipV[=(1 << 0)=]
+-FlipH[=(1 << 1)=]
+-Remap[=(1 << 4)=]
+-Gray[=(1 << 2)=]
+-Invert[=(1 << 3)=]
+-Disable[=(1 << 8)=]
+
++QuickSnapshotSave
+-Fixed
+-Current
+-Ask
+
++MouseBehavior[:int:]
+-NoBehavior[--][:Qt::NoButton:]
+-LeftClick[-Left button-][:Qt::LeftButton:]
+-RightClick[-Right button-][:Qt::RightButton:]
+-MiddleClick[-Middle button-][:Qt::MiddleButton:]
+-DoubleClick[-Double click-][:-1:]
+-ScrollUp[-Scroll up-][:-2:]
+-ScrollDown[-Scroll down-][:-3:]
+-Extra1Click[-Extra button 1-][:Qt::ExtraButton1:]
+-Extra2Click[-Extra button 2-][:Qt::ExtraButton2:]
+-Extra3Click[-Extra button 3-][:Qt::ExtraButton3:]
+-Extra4Click[-Extra button 4-][:Qt::ExtraButton4:]
+-Extra5Click[-Extra button 5-][:Qt::ExtraButton5:]
+-Extra6Click[-Extra button 6-][:Qt::ExtraButton6:]
+-Extra7Click[-Extra button 7-][:Qt::ExtraButton7:]
+-Extra8Click[-Extra button 8-][:Qt::ExtraButton8:]
+-Extra9Click[-Extra button 9-][:Qt::ExtraButton9:]
+
+#+AudioEqualizerPreset
+#-Flat[-Flat-]
+#-Classical[-Classical-]
+#-Club[-Club-]
+#Dance[-Dance-]
+#-FullBass[-Full bass-]
+#-FullBassTreble[-Full bass treble-]
+#-FullTreble[-Full treble-]
+#-Headphones[-Headphones-]
+#-LargeHall[-Large hall-]
+#-Live[-Live-]
+#Party[-Party-]
+#-Pop[-Pop-]
+#-Reggae[-Reggae-]
+#-Rock[-Rock-]
+#-Ska[-Ska-]
+#-Soft[-Soft-]
+#-SoftRock[-Soft rock-]
+#-Techno[-Techno-]
+
++LogOutput
+-Off[-No Output-]
+-StdOut[-stdout-]
+-StdErr[-stderr-]
+-File[-Text File-]
+-Journal[-journald-]
+-Viewer[-Viewer-]
+
++CodecId[:QString:]
+-Invalid[-Not available-][:u""_q:]
+-Mpeg1[-MPEG-1 video-][:u"mpeg1video"_q:]
+-Mpeg2[-MPEG-2 video-][:u"mpeg2video"_q:]
+-Mpeg4[-MPEG-4 part 2-][:u"mpeg4"_q:]
+-H264[-H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10-][:u"h264"_q:]
+-Vc1[-SMPTE VC-1-][:u"vc1"_q:]
+-Wmv3[-Windows Media Video 9-][:u"wmv3"_q:]
+-Hevc[-H.265 / HEVC (High Efficiency Video Coding)-][:u"hevc"_q:]
+
++JrConnection
+-Tcp[-TCP socket-]
+#-Ssl[-SSL over TCP-]
+-Local[-Local socket-]
+
++JrProtocol
+-Raw[-Raw JSON-RPC message-]
+-Http[-JSON-RPC over HTTP-]
+
++FramebufferObjectFormat[[texture]][-Texture Format-][:OGL::TextureFormat:]
+!#include "opengl/openglmisc.hpp"
+-Auto[[auto]][-Auto-][:OGL::NoTextureFormat:]
+-Rgba8[[rgba8]][-8-bit-][:OGL::RGBA8_UNorm:]
+-Rgba16[[rgba16]][-16-bit-][:OGL::RGBA16_UNorm:]
+
++Visualization[[visualization]][-Visualization-]
+-Off[[off]][-Off-]
+-Bar[[bar]][-Bar-]
+
++Rotation[[rotate]][-Rotate-][:int:]
+-D0[[0]][-0°-][:0:]
+-D90[[90]][-90°-][:90:]
+-D180[[180]][-180°-][:180:]
+-D270[[270]][-270°-][:270:]

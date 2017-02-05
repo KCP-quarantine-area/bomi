@@ -1,0 +1,11 @@
+[main]
+host = https://www.transifex.com
+minimum_perc = 75
+
+[bomi.bomi]
+file_filter = src/bomi/translations/bomi_<lang>.ts
+source_file = src/bomi/translations/bomi_en.ts
+source_lang = en
+lang_map = pl_PL: pl
+type = QT
+

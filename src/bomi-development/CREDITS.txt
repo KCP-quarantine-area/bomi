@@ -1,0 +1,20 @@
+Credit
+
+* Ivan from Kotus Works (https://plus.google.com/u/1/117118228830713086299/posts)
+
+    designer of nice icons/logos/skins/controls for bomi
+
+* varlesh (varlesh@gmail.com)
+
+    designer of some skins
+
+* Oxygen Team (https://techbase.kde.org/Projects/Oxygen)
+
+    developers of application icons mainly in preferences dialog
+    see ICON-AUTHORS.txt and ICON-COPYING.txt for defails
+
+Special Thanks
+
+* Mingyu Jo and Donhyun Ha
+
+    gave new name for CMPlayer, that is, bomi

@@ -1,0 +1,30 @@
+#include "channellayout.hpp"
+
+const std::array<ChannelLayoutInfo::Item, 26> ChannelLayoutInfo::info{{
+    {ChannelLayout::Mono, u"Mono"_q, u"1.0"_q, "mono"},
+    {ChannelLayout::_2_0, u"_2_0"_q, u"2.0"_q, "stereo"},
+    {ChannelLayout::_2_1, u"_2_1"_q, u"2.1"_q, "2.1"},
+    {ChannelLayout::_3_0, u"_3_0"_q, u"3.0"_q, "3.0"},
+    {ChannelLayout::_3_0_Back, u"_3_0_Back"_q, u"3.0(back)"_q, "3.0(back)"},
+    {ChannelLayout::_3_1, u"_3_1"_q, u"3.1"_q, "3.1"},
+    {ChannelLayout::_4_0, u"_4_0"_q, u"4.0"_q, "quad"},
+    {ChannelLayout::_4_0_Side, u"_4_0_Side"_q, u"4.0(side)"_q, "quad(side)"},
+    {ChannelLayout::_4_0_Diamond, u"_4_0_Diamond"_q, u"4.0(diamond)"_q, "4.0"},
+    {ChannelLayout::_4_1, u"_4_1"_q, u"4.1"_q, "4.1"},
+    {ChannelLayout::_4_1_Diamond, u"_4_1_Diamond"_q, u"4.1(diamond)"_q, "4.1"},
+    {ChannelLayout::_5_0, u"_5_0"_q, u"5.0"_q, "5.0"},
+    {ChannelLayout::_5_0_Side, u"_5_0_Side"_q, u"5.0(side)"_q, "5.0(side)"},
+    {ChannelLayout::_5_1, u"_5_1"_q, u"5.1"_q, "5.1"},
+    {ChannelLayout::_5_1_Side, u"_5_1_Side"_q, u"5.1(side)"_q, "5.1(side)"},
+    {ChannelLayout::_6_0, u"_6_0"_q, u"6.0"_q, "6.0"},
+    {ChannelLayout::_6_0_Front, u"_6_0_Front"_q, u"6.0(front)"_q, "6.0(front)"},
+    {ChannelLayout::_6_0_Hex, u"_6_0_Hex"_q, u"6.0(hexagonal)"_q, "hexagonal"},
+    {ChannelLayout::_6_1, u"_6_1"_q, u"6.1"_q, "6.1"},
+    {ChannelLayout::_6_1_Hex, u"_6_1_Hex"_q, u"6.1(back)"_q, "6.1(back)"},
+    {ChannelLayout::_6_1_Front, u"_6_1_Front"_q, u"6.1(front)"_q, "6.1(front)"},
+    {ChannelLayout::_7_0, u"_7_0"_q, u"7.0"_q, "7.0"},
+    {ChannelLayout::_7_0_Front, u"_7_0_Front"_q, u"7.0(front)"_q, "7.0(front)"},
+    {ChannelLayout::_7_1, u"_7_1"_q, u"7.1"_q, "7.1"},
+    {ChannelLayout::_7_1_Wide, u"_7_1_Wide"_q, u"7.1(wide)"_q, "7.1(wide)"},
+    {ChannelLayout::_7_1_Side, u"_7_1_Side"_q, u"7.1(side)"_q, "7.1(wide-side)"}
+}};

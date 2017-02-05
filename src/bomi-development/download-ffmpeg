@@ -1,0 +1,14 @@
+#! /bin/bash
+
+install -d src
+
+version=2.6.2
+url=http://www.ffmpeg.org/releases/ffmpeg-${version}.tar.gz
+out=ffmpeg.tar.gz
+if ! [ -f ${out} ]; then
+  curl -o src/${out} "${url}"
+  cd src && tar xvfz ${out} && mv ffmpeg-${version} ffmpeg && rm ${out}
+fi
+
+#cd src && git clone --depth 1 git://source.ffmpeg.org/ffmpeg.git ffmpeg && cd ffmpeg && find . -name '.git*' | xargs rm -rf
+

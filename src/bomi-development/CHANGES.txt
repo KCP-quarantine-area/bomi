@@ -1,0 +1,1008 @@
+0.9.11
+
+  * New: save button for log viewer
+  * New: dynamic range option for volume and use exponential scale by default(#364)
+  * Fix: backport fix for wasting CPU (#363)
+  * Fix: workaround for weird behavior of mouse event (#317)
+  * Fix: add 'Ignore' for FPS in youtube-dl options (#360)
+  * Fix: parse \N and \h properly for .srt (#365)
+  * Fix: compile error if vdpau or vaapi are disabled (#366)
+  * Fix: make URL edit get focus when URL dialog open (#370)
+  * Fix: ignore SIGPIPE to prevent termination on reconnection for streaming
+  * Fix: wrong icon of play/pause button for metro skin
+  * Fix: enforce to update video renderer when window gets visible
+  * Fix: ignore invalid URL for mime data
+  * (Linux)Fix: albumart image for mpris wasn't exported properly
+  * (Windows)Fix: workaround for wrong screen geometry
+  * (Windows)Fix: some channel layouts didn't work (#373)
+
+0.9.10
+
+  * New: 'Open > From Clipboard' to open URL from clipboard data
+  * New: 'Play > Streaming' Format to select YouTube format
+  * New: options to select default format for youtube-dl script
+  * New: option to save persitent data in application folder
+  * New: crop functionality for video clip maker
+  * New: options to configure preview size in Theme tab in preferences (#341)
+  * New: add playlist name filter for open/append file menus (#336, #337)
+  * New: handle cue sheet as  playlist (#336)
+  * Fix: prefer webm & small resolution format for preview (#355)
+  * Fix: YouTube Live streaming didn't work (#356)
+  * Fix: turn on OpenGL debugger when --debug option given
+  * Fix: don't blend subtitle FBO when no subtitle exist
+  * Fix: render video frame in scene graph thread
+  * Fix: apply color matrix only if required
+  * Fix: fps spin box wasn't enabled for Constant framerate
+  * Fix: use original size FBO for bilinear scaler
+  * Fix: codec options in video clip maker were not saved properly
+  * Fix: wrong termination of yle-dl before end of playback
+  * Fix: disable resuming playbak/preview for yle-dl streaming
+  * Fix: 'Video > Crop' was broken
+  * Fix: some color picker buttons had wrong size in preferences dialog (#347)
+  * Fix: video preview was broken for disc playback (#338)
+  * Fix: wrong name filter for playlist file
+  * Fix: support fine-resolution wheels or touchpad (#333)
+  * Fix: add extensions .ape, .it, .xm for audio files (#332)
+  * Fix: add missing '.mod' extension for audio files (#332)
+  * Fix: 'pause when hidden' was always applied all files (#332)
+  * Fix: set maximum duration for animtion to show current playing item in playlist (#331)
+
+0.9.9
+
+  * New: Play > Seek > Previous Playback (#134)
+  * Fix: duplicated internal subtitle handling causes high CPU usage (#324,#326,#327)
+  * Fix: crop paddings added by VDPAU for non-standard res. videos (#324)
+  * Fix: Start/End time filters in subtitle viewer didn't follow system palette (#328)
+  * Fix: seeking in subtitle viewer was broken when captions are filtered (#328)
+  * Fix: 'Scroll to current time' in subtitle viewer was broken (#328)
+  * Fix: wrong intial state for 'Show start/end time' in Subtitle Viewer
+  * Fix: adjust column widths for Start and End automatically in Subtitle Viewer (#328)
+  * Fix: wrong time text width for native skin (#323)
+
+0.9.8
+
+  * New: Video > Quality Preset
+  * New: Video > Rotate
+  * New: Video > Interpolator (Downscale)
+  * New: Video > Make Vide Clip (#313)
+  * Fix: wrong bitrate values for decoder
+  * Fix: wrong window size hint when aspect ratio adjusted
+  * Fix: display proper duration for DASH formats from YouTube
+  * Fix: deadlock on execution when 'Unmute when volume adjusted' enabled
+  * Fix: keep session connected with opensubtitles.org (#314)
+  * (Linux)Fix: send mpris:artUrl metadata for MPRIS (#304)
+
+0.9.7
+
+  * New: cache file related options in cache tab of preferences
+  * New: implement display of cached state in demuxer in seek bar (#300)
+  * New: internal title bar for frameless mode
+  * New: visualization for audio
+  * New: --set-subtitle option for command line to set subtitle file
+  * New: show history/playlist by clicking left/right edge
+  * New: new option to unmute when volume adjusted (#266)
+  * New: compact mode for Tethys skin
+  * New: hide history/playlist by clicking empty space (#307)
+  * New: skin 'metro' - Windows metro style
+  * New: Enter Fullscreen/Exit Fullscreen menu (#307)
+  * Mod: use soft clipping by default
+  * Fix: enable frameless mode on Windows
+  * Fix: fit window size to rendering size when using window size menu
+  * Fix: wrong calculation of texture coordinate for video frame (#312)
+  * Fix: prevent too high amplification by normalizer on start of playback
+  * Fix: don't reset normalizer history on seeking
+  * Fix: set page step of radius slider to 1 in advanced interpolation dialog
+  * Fix: wrong path for open file from command line when launched bomi not in PATH
+  * Fix: don't hide history/playlist while scrollbar pressed
+  * Fix: reduce delay for initial display of Preferences dialog drastically (#308)
+  * Fix: checking GL_RGBA16 for FBO texture format didn't work (#308)
+  * Fix: reduce width of playlist to fit to item name not location
+  * Fix: don't disturb playback on loading skin
+  * Fix: hide controls when cursor is located in history/playlist (#303)
+  * Fix: adjust y-position of preview automatically
+  * Fix: raise z-order of TimeSlider to prevent preview being obstructed
+  * Fix: metadata wasn't exposured to MPRIS (#304)
+  * Fix: don't display preview when video is not available (#302)
+  * (Windows)New: progress indication in task bar
+  * (Windows)Fix: couldn't close window while playing
+  * (Windows)Fix: window jumped when drag window after drag title bar
+  * (Windows)Fix: reszing window by top/left grib was disabled
+  * (Windows)Fix: 'snap to edge' didn't work when moving by title bar
+
+0.9.6
+
+  * New: file name template for quick snapshot (#279)
+  * New: 'Append Folder' for playlist
+  * New: 'Open Folder' can open subfolders recursively (#271)
+  * New: new default skin 'Tethys' designed by Kotus Works
+  * New: 'Find by Name' and 'Find by Info' for find subtitles (#298)
+  * New: starmark to indicate favorite/persistent item for history (#294)
+  * New: 'Tool > Associate Files' menu for Windows
+  * New: snap window to screen edge on Windows (#290)
+  * New: 'Tool > Playlist > Regenerate' menu to regerate playlist (#293)
+  * New: make TimeDuration interactive to display msec/remaining time (#292(
+  * New: 'Freya' skin by varlesh (#288)
+  * New: 'Prefer external files to interanl tracks' option for subtitle autoselction (#280)
+  * New: options to show media title in name column of history (#285)
+  * New: 'Show preview when mouse over seek bar' option in preferences (#287)
+  * New: 'Ask video quality' option for youtube-dl streaming in preferences
+  * New: 'Show hidden controls whenever mouse moved' option in preferences (#264)
+  * New: 'Video > Texture Format'
+  * Mod: don't display zero hours(0:) in time texts
+  * Mod: refine history/playlist design by Kotus Works
+  * Fix: prompt message box when clearing history
+  * Fix: failed to resolve skin path when launched in remote path (#299)
+  * Fix: workaround for dialogs behind main window on Windows
+  * Fix: keep snapped state on edge on window size set by menu
+  * Fix: don't resync on playback speed changed
+  * Fix: channel manipulation options weren't restored (#291)
+  * Fix: wrong volume value for MPRIS v2 interface (#286)
+  * Fix: embedded albumart wasn't displayed on initail playback (#283)
+  * Fix: display album art as 'Album Art' instead of 'Video Track'
+  * Fix: audio file with albumart was recognized as video (#283)
+  * Fix: workaround for choppy window move on Windows (#266)
+  * Fix: use GL_RGBA16 for fbo if supported by default (#282)
+  * Fix: enable 'High Quality Upscaling' only if GL_RGBA16 fbo supported (#282)
+  * Fix: unsigned 8bit integer format for audio was disabled (#281)
+  * Fix: alert if snapshot file is not wriable instead of silent fail
+  * Fix: window wasn't hidden on closed on Windows (#266)
+  * Fix: wrong window frame style when restored from fullscreen to maximized state on Windows
+  * Fix: sort playlist by full path not file name
+  * Fix: wrong restoration for poistion of floating panel in skin (#278)
+
+0.9.5
+
+  * Fix: restoring window size didn't work (#276)
+  * Fix: potential infinite loop for empty input data of audio (#277)
+
+0.9.4
+
+  * New: support millisecond precision for timeout to hide cursor (#275)
+  * New: make windows size menus configurable
+  * New: configure options --disable-vaapi, --disable-vdpau (#273)
+  * New: improve audio volume normalizer
+  * New: support some non-standard m3u playlist
+  * New: restore previous window size for initial fullscreen state (#261)
+  * New: selections for methods to disable screensaver
+  * New: split overriding choices for ASS style into text style/position/scale (#256)
+  * Mod: drop mpg123 decoder
+  * Mod: drop ICU dependency
+  * Fix: Ok/Apply button wasn't enabled when channel manipulation changed into default
+  * Fix: some controls in 'Mouse cursor' group was always disabled (#275)
+  * Fix: reduce file size of pref.json (#275)
+  * Fix: no video with intel GPU on windows (#266)
+  * Fix: don't hide floating controls while mouse hovering
+  * Fix: tempo scaler was always turned on (#269)
+  * Fix: media name in extended m3u wasn't displayed
+  * Fix: wrong track name display in on-screen message (#263)
+  * Fix: display track number when track title and language are unavailable
+  * Fix: subtitle downloader always indicated 50% after downloading is done (#262)
+  * Fix: remove duplicated encodings
+  * Fix: use SetThreadExecutionState() to disable screensaver on windows (#253)
+  * Fix: determine playlist from URL by mime type (#258)
+  * Fix: volume slider of GaN skin didn't show the volume level (#260)
+  * Fix: 'Select Next' for sub track didn't work properly (#254)
+  * Fix: wrong video coordinate on toggling 'Window > Remove Frame'
+  * Fix: remove margin around internal subtitle
+  * Fix: ensure internal widget fit to window on initialization
+  * Fix: save snapshot in separated thread to prevent interface frozen
+  * Fix: snapshot without subtitle didn't work (#251)
+  * Fix: set LC_MESSAGES=C instead of LANG to test qmake/lrelease version
+
+0.9.3
+
+  * New: display used encoding for subtitle file track in playinfo
+  * New: '--dump-api-tree' and '--dump-action-list' command line options
+  * New: JSON-RPC interface (#247)
+  * New: current deinterlacing method in playinfo
+  * New: options to set general font and fixed-width font
+  * New: 'Window > Remove Frame' for frameless(borderless) window
+  * New: 'Subtitle > Subtitle Sync > Bring Previous/Next Subtitle' menu (#245)
+  * New: allow to map actions for left/right button click
+  * New: ask username and password on permission denied for smb://
+  * New: 'Subtitle > Subtitle Scale' menu to adjust font scale during playback (#240)
+  * New: 'Subtitle > Override ASS Style' menu (#240)
+  * New: options to specify authentication info for samba
+  * New: configurable step for 'move screen position'
+  * New: 'Video > Zoom' menu
+  * New: color adjustment for RGB channel
+  * New: video color editor dialog
+  * New: new skin 'air'
+  * New: 'Est. Frame Number' item in playback information
+  * New: aspect ratio is adjustable now
+  * New: enable smbclient support(smb:// protocol)
+  * New: caption filter in subtitle viewer
+  * New: checkbox to display time in milliseconds
+  * New: language filter list for subtitle find dialog (#236)
+  * New: reconstruct encoding list
+  * New: reload file with specific encoding
+  * New: seek by double clicking caption in subtitle viewer (#231)
+  * New: accept non-media type URL by drag-and-drop (#225)
+  * Mod: don't capitalize items in playinfo
+  * Mod: drop LinearBlend and Median deinterlacer
+  * Mod: drop libpostproc dependency
+  * Mod: drop external command support to disable screensaver
+  * Fix: prefer cp1250 to iso-8859-2 for autodetection
+  * Fix: deselecting internal subtitle didn't work (#248)
+  * Fix: wrong H/W Acc. state in playinfo
+  * Fix: request _NET_WM_MOVERESIZE to window manager for move-by-drag
+  * Fix: unset pressed button on button released
+  * Fix: display all selected subtitles in playinfo
+  * Fix: Bob/LinearBob/CubicBob supports all pixel format now
+  * Fix: top and button pixels was blinking with Bob/LinearBob/CubicBob
+  * Fix: subtitle position menu worked in opposite way
+  * Fix: subtitle alignment wasn't kept after position changed
+  * Fix: rename Input/Output/Renderer -> Decoder/Filter/Output
+  * Fix: display package-bitrate for decoder input in playinfo
+  * Fix: synchronize display order of menu in preference with context menu
+  * Fix: don't display logo during changing current media
+  * Fix: don't display property OSD on intialization of new playback
+  * Fix: potential crash on changing subtitles
+  * Fix: potential crash when parsing SAMI subtitles
+  * Fix: crash on exiting while dialogs are open
+  * Fix: subtitle viewer didn't work if it was open before start playback
+  * Fix: crash on reloading subtitle during subtitle viewer is open
+  * Fix: don't draw subtitles in snapshot when hidden
+  * Fix: popup an error message for error on loading skin
+  * Fix: disable IME on main window
+  * Fix: pixel format mismatch which causes crash or deinterlacing disabled
+  * Fix: disc title wasn't restored
+  * Fix: prevent interference from other applications using PulseAudio (#230)
+  * Fix: keep horizontal scroll bar position on auto scroll in subtitle viewer
+  * Fix: currupted font for current caption in subtitle viewer
+  * Fix: prevent bad interfere from MPRIS and QML TimeSlider
+  * Fix: save and restore states of subtitle find dialog and subtitle viewer
+  * Fix: show history/playlist after 200ms timeout when mouse hovers on edge
+  * Fix: keep 'default' shortcuts for unchanged shortcuts of actions
+  * Fix: display full URL for non-media type URL
+  * Fix: display media name provided by youtube-dl (#226)
+  * Fix: Ok/Apply wasn't activated for hwacc codec change
+
+0.9.2
+
+  * New: new skin 'native' which supports native look & feel
+  * New: display time on mouse position changed over time slider (#221)
+  * Fix: chapter marker was not visible in GaN
+  * Fix: some menu checked state was not restored on start up
+  * Fix: set current window style when preferences opended
+  * Fix: restore maximized state from fullscreen
+  * Fix: bring back compatibility for C++14 compiler with non C++14 libstdc++
+  * Fix: memory leak in reply for async request
+  * Fix: crash on deselecting subtitle
+  * Fix: couldn't select tracks in paused state
+  * Fix: restore maximized/fullscreen state on start up
+  * Fix: show Close button instead of Cancel in preferences dialog
+
+0.9.1
+
+  * New: new default skin 'Ardis' designed by Kotus work
+  * New: new skin 'Numix' by varlesh
+  * New: new skin 'one'
+  * New: 'Audio > Equalizer' in menu
+  * New: 'Video > Interpolator/Chroma Upscaler > Advanced...' for advanced settings
+  * New: 'Video > Motion Interpolation' and related options
+  * New: 'Play > State' menu to display current playing state
+  * New: 'Play > Seek > To the Beginning' in menu
+  * New: 'Play > Seek > Next Black Frame' menu (#179)
+  * New: 'Tool > Log Viewer' in menu (#150)
+  * New: journald logging support (#218)
+  * New: option to select logging level for journald, stdout, stderr, external file
+  * New: option to specify file name format or use temporary file for downloaded subtitles
+  * New: option to use precise seeking in 'General > Play' tab of preferences (#199)
+  * New: option to ignore playback resume switching item in playlist (#201)
+  * New: use xcb_screensaver_suspend to disable screensaver
+  * New: SubRip subtitle parser works more tolerantly
+  * New: show playlist/history when mouse hovers on the right/left edge
+  * New: external audio file support
+  * New: open DVD by drag-and-drop of 'VIDEO_TS' folder
+  * New: open folder by drag-and-drop
+  * Fix: workaround for gray-out issue within Plasma 5
+  * Fix: couldn't click disc menu
+  * Fix: flush after requet XCB_SCREEN_SAVER_RESET (#152)
+  * Fix: crash on audio format change (#213)
+  * Fix: crash on reconstruction of audio filter chain during playback (#127)
+  * Fix: set screensaver interval for xcb (#152)
+  * Fix: set audio client name for PulseAudio
+  * Fix: sort generated playlists numerically
+  * Fix: implement loopStatus for Mpris
+  * Fix: enable 'Ok' and 'Apply' button in preferences only if options changed
+  * Fix: keep current row after list modified in SimpleListWidget (#205)
+  * Fix: wrong disabling condition of Up/Down button in language priorities
+  * Fix: reserve state on reloading(e.g., applying preferences)
+  * Fix: check subtitle file format instead of file extension
+  * Fix: closing window didn't work in full screen mode (#183)
+  * Fix: aspect ratio and crop ratio didn't apply immediately (#202)
+  * Fix: Auto-exit and Auto-shutdown didn't work (#200)
+  * Fix: video color wasn't restored on executed
+  * Fix: don't mix channels for identical input & output channel layouts
+  * Fix: handle percent encoding in URL more properly (#18)
+  * Fix: missing extension for ifo video file (#181)
+  * Fix: wrong playlist position on initial state
+
+0.9.0
+
+  * New: new name for application 'bomi'
+  * New: new logo (designed by Ivan from Kotus Works)
+  * New: timeline position and duration of OSDs are configurable (#173)
+  * New: 'High Quality Scaling' menu in Video
+  * New: check qmake version in configure
+  * New: timeline position and duration of OSDs are configurable (#173)
+  * New: new configure flag to specify default skin: --defaultskin
+  * New: yle-dl script support (#166)
+  * New: new skin 'Breeze Dark' by varlesh (#170)
+  * New: new skin 'Breeze' written by varlesh (#169)
+  * Mod: make hardware acceleration enabled by default
+  * Mod: drop support to load settings for < 0.8.17
+  * Mod: use 32bit floating point format for audio if possible
+  * Fix: enable SSL support for in-tree FFmpeg
+  * Fix: regression disabled wmv3 for vaapi
+  * Fix: regression disabled resizing to fit video
+  * Fix: regression disabled dithering
+
+0.8.17
+
+  * New: option to show/hide media location in playlist under Skin & Style tab
+  * New: remember the last choice of language in subtitle find dialog (#154)
+  * New: 'Exclude images when generate playlist' option in Open tab of preferences
+  * New: regular expression support for subtitle search path (#114)
+  * New: add 'youtube-dl' script support (libquvi support dropped)
+  * New: language priority for audio track (#125)
+  * New: more informative playback information display
+  * New: support for open folder from file manager or terminal (#144)
+  * New: shuffle/repeat playlist (#110)
+  * New: support mouse action for extra buttons (#128)
+  * New: audio device list (#121)
+  * Mod: adjust log level for mpv and opengl automatically
+  * Mod: remove blur/sharpen filter
+  * Mod: remove portaudio support
+  * Mod: use native hardware acceleration API only
+  * Fix: don't propagate wheel event in skin
+  * Fix: floating OSC wasn't visible in some cases even if cursor visible
+  * Fix: hide/show cursor when toggle fullscreen mode (#130) 
+  * Fix: make TimeSlider work with wheel
+  * Fix: keep state when reload by changing preferences (#163)
+  * Fix: wrong deinterlacer state
+  * Fix: line spacing option didn't work (#162)
+  * Fix: add some missing mimetype/file extensions including webm (#149)
+  * Fix: wrong playback state while opening
+  * Fix: playback wasn't restarted on cache filled
+  * Fix: media was reloaded when paused while buffering (#123)
+  * Fix: dock type control in skin wasn't hidden on reloading skin in fullscreen mode (#130)
+  * Fix: wrong behavior of playlist generation option (#115)
+  * Fix: use binary prefix for storage size
+  * Fix: cannot select system locale
+  * Fix: english locale was ignored
+  * Fix: ignore level check for VDPAU
+  * Fix: occasional crush on exiting
+  * Fix: wrong cache size handling (#122)
+  * Fix: handle C locale as en_US not system locale
+  * Fix: broken video for some resolution of frames with VDPAU
+  * Fix: save and restore volume normalizer length
+
+0.8.16
+
+  * New: additional subtitle search path
+  * Fix: don't handle empty audio samples as error
+  * Fix: empty skin for fallback on error of loading skin didn't work
+
+0.8.15
+
+  * New: format/quality/ask options for quick snapshot(#99)
+  * Fix: too many initialization of VDPAU mixer
+  * Fix: broken image with VDPAU on transition of videos
+  * Fix: notify confliction of shortcuts in preferences(#100)
+  * Fix: save preferences under ~/.config
+
+0.8.14
+
+  * New: quick snapshot
+  * New: support YCgCo color space
+  * New: OSD appearance is customizable
+  * New: disable screensaver using external command
+  * New: can map every action to mouse behaviours
+  * New: reload subtitle files
+  * New: menu navigation support for Blu-ray disc
+  * New: 'Show OSD timeline when seeking' option
+  * New: 'Color Space' menu in Video
+  * New: 'Faenza-Zukitwo' skin written by varlesh
+  * New: 'Auto-load File(s)' menu to (re)auto-load subtitle files
+  * Fix: wrong cache value
+  * Fix: don't parse remote playlist by default
+  * Fix: crash on too many logs
+  * Fix: relative urls in playlist weren't handled properly
+  * Fix: slightly dislocated internal/ASS subtitles
+  * Fix: wrong color blending for ASS subtitles
+  * Fix: freezing for a while on update history (#81)
+  * Fix: a hack for wrong named color for subtitle
+  * Fix: wrong shadow color
+  * Fix: better sync for .ass subtitle (#69)
+  * Fix: support for stylish tags in ruby tag
+  * Fix: 'Show OSD messages ...' options was not preserved
+  * Fix: short of available hwdec surfaces for VDPAU
+  * Fix: internal subtitle selection wasn't restored
+  * Fix: internal subtitle selection wasn't restored
+  * Fix: 'Next subtitle' didn't work
+  * Fix: frame-based subtitle didn't work
+  * Fix: filename which contains % didn't work (#73)
+  * Fix: clipping on downmixing audio
+  * Fix: rerendering subtitle didn't work
+  * Fix: open remote playlist from command line
+  * Fix: wrong behavour of m3u playlist parser
+  * Fix: apply subtitle style to internal subtitles
+  * Fix: reduce redundant copy of internal subtitle data
+
+0.8.13
+
+  * New: Blu-ray support
+  * New: basic support for MPRISv2
+  * New: session management (autosave state when logout or shutdown)
+  * New: Spanish translations (thanks to EOL-Fansub people)
+  * New: 'Previous Frame'/'Next Frame' for seek by frame
+  * New: playback resuming for DVD/Blu-rays
+  * Fix: add MIME video/mp2t (mpeg2 transport streams and Blu-ray format) #56
+  * Fix: remove disabled audio drivers in preferences
+  * Fix: wrong player state when change media in paused state
+  * Fix: enable 'Title' menu for DVD/Blu-ray
+  * Fix: show device list in 'Open DVD/Blu-ray' dialog for Linux
+  * Fix: check ffmpeg version (see #62)
+  * Fix: device list in 'Open DVD/Blu-ray' dialog for Linux
+  * Fix: make buttons in dialogs translatable
+  * Fix: load Qt's translation file on changing locale
+
+0.8.12
+
+  * New: new configure sciprt
+  * New: VDPAU support (experimental)
+  * New: save support for m3u/m3u8 playlist
+  * New: download remote playlist
+  * Mod: set default channel layout to stereo
+  * Fix: ass subtitle was invisible when open
+  * Fix: hwacc deinterlacer didn't work as doubler
+  * Fix: turning on/off didn't affect while paused
+  * Fix: linear bob deinterlacer by OpenGL causes crash
+  * Fix: partially broken graphics in skins
+  * Fix: playlist always removes and moves (up/down) the first file #44
+  * Fix: no image but garbage in snapshots(#43)
+  * Fix: hwacc-texture will be rendered directly.
+  * Fix: remove duplicated frame for playlist and adjust margins
+  * Fix: soft-clipping for integer-type audio format didn't work
+  * Fix: some filters didn't work for harware acceleration
+  * Fix: flipping filters are not properly enabled #54 
+
+0.8.11
+
+  * Fix: audio output channel layout didn't work
+  * Fix: hide scrollbar in history/playlist when no scrolling is needed
+  * Fix: keep paused state when applying preferences(#40)
+  * Fix: open file dialog at the folder where last open local media file(#40)
+  * Fix: store enum values for MRL state as string rather than integer
+  * Fix: useless value for playback percentage till start playback
+  * Fix: recognized directory as MRL(#40)
+  * Fix: workaround to suppor non-8bit encoded sources for NVIDIA driver
+  * Fix: FBO format woll fall back to GL_RGBA8 when GL_RGBA16 is not available
+  * Fix: workaround for NVIDIA driver issue which disables hardware rasterization
+
+0.8.10
+
+  * New: keyboard navigation in history and playlist
+  * New: 444P image format support
+  * New: configurable save & restore state per media playback
+  * Mod: change default shortcut for Subtitle View and Find Subtitle
+  * Mod: drop OpenAL support
+  * Fix: subtitle sync was not applied to internal subtitles
+  * Fix: ask overwrite or save as when a subtitle with the same name to be downloaded exists
+  * Fix: cannot open .ass file whose name contains blank
+  * Fix: crash or broken display of internal subtitles
+  * Fix: display locale name of system in preferences
+  * Fix: locale was reverted to system default one when preferences applied
+  * Fix: some OpenGL errors in dithering texture and internal subtitle renderer
+  * Fix: convert ISO 639-2 B code to localized language name
+  * Fix: display '--' instead of meaningless value in codec info of playback info
+  * Fix: broken audio info in playback info
+  * Fix: improvement of handling audio sample format
+  * Fix: notify channel layout to audio output
+  * Fix: enforce absolute file path always
+
+0.8.9
+
+  * New: display language name instead of ISO code
+  * Fix: wrong information in menu about current video/audio/subtitle tracks(#36)
+  * Fix: crash on output channel layout changed
+
+0.8.8
+
+  * New: download subtitle from opensubtitles.org
+  * Fix: broken synchronization of app state and menu state
+  * Fix: 'Apply in fullscreen mode only' for 'Hide mouse cursor' was always checked
+  * Fix: remove previous internal subtitles with new playback(#36)
+  * Fix: first caption in subtitle view is duplicated
+
+0.8.7
+
+  * New: states such as volume, subtitle selections, and so on, are preserved for each playback
+  * New: Serbian translations (thanks to Alen)
+  * New: DVD menu support recovered, partially.
+  * New: OSS audio output driver
+  * Mod: remove display duration for image slides
+  * Fix: crash on change language
+  * Fix: Urlencoded URLs doesn't open when passed as a parameter(#18)
+  * Fix: subtitle rendering state was not recovered properly(#29)
+  * Fix: 0m 60s should be displayed as 1m 00s(#29)
+  * Fix: wrong time display in paused state(#29)
+  * Fix: wrong action binding for forward button in 'modern' skin (#25)
+
+0.8.6
+
+  * New: new option 'Apply in fullscreen mode only' for 'Hide mouse cursor'
+  * Fix: hiding mouse cursor with Qt 5.2.0 didn't work (#22)
+  * Fix: crash when linked with Qt 5.2.0
+  * Fix: open file dialog will open in the folder where last played is located
+  * Fix: urlencoded URLs doesn't open when passed as a parameter (issue #18)
+  * Fix: volume normalizer is broken(issue #17)
+
+0.8.5
+
+  * New: new default skin 'GaN'
+  * New: Previous/Next Chapter actions
+  * New: bounding box for subtitle
+  * New: blur option for subtitle shadow
+  * Mod: redesign history/playlist view
+  * Mod: remove chapter number in chapter name
+  * Mod: remove duplicated time text in chapter name
+  * Fix: wrong update timing for audio and video informations
+  * Fix: remove whitespaces at end of captions
+  * Fix: chroma upscaling didn't work
+
+0.8.4
+
+  * New: channel manipulation options and channel layout menu
+  * New: 'Dropped Frames' item in playback informations
+  * New: 'Resize to video resolution in windowed mode when video is changed' option
+  * New: 4-Lobed interpolators (Lanczos and Spline)
+  * New: Czech translations (thanks to Pavel Fric)
+  * New: German translations (thanks to Ben R)
+  * Mod: display channel layout instead of the number of channels in playback informations
+  * Fix: previous video's subtitles were displayed on resized with empty subtitles
+  * Fix: current time wasn't updated on seeking in paused state
+  * Fix: previous video scene was still visible when next audio is started
+  * Fix: don't display system tray icon and related options when not available
+  * Fix: previous video's subtitles were displayed on resized with empty subtitles
+  * Fix: current time wasn't updated on seeking in paused state
+  * Fix: previous video scene was still visible when next audio is started
+  * Fix: don't display system tray icon and related options when not available
+  * Fix: interpolators were inaccurate
+  * Fix: recent open list in context menu didn't work
+  * Fix: falling into Loading state even while playing occasionally
+  * Fix: links in About dialog didn't work
+
+0.8.3
+
+  * Mod: remove approx. interpolators which is useless
+  * Fix: restoring window position didn't work
+  * Fix: wrong color display of non-8bit-encoded sources
+
+0.8.2
+
+  * Fix: too distorted color in Extended Range
+  * Fix: cannot open media in some file managers which call bomi with url)
+  * Fix: mute button in skin didn't work
+  * Fix: workaround to enable libquvi-0.9 (libproxy is always disabled)
+
+0.8.1
+
+  * New: Remap Range/Extended Range in Color Range menu
+  * Mod: change fbo color depth to 16bit from 8bit
+  * Fix: too blurry scene when interpolator is enabled
+  * Fix: subtitle open dialog was covered by main window
+  * Fix: minimized when exit fullscreen mode in some WM
+  * Fix: wrong translation
+  * Fix: apply filters immediately
+  * Fix: 'Invert Color' and 'Grayscale' filter didn't work.
+  * Fix: green line on right edge for H.264
+
+0.8.0
+
+  * New: 'Invert direction of mouse wheel scroll' in mouse action tab of preferences
+  * New: cache information in playback information
+  * New: Italian translation (thanks to M0Rf30)
+  * New: media name for extended m3u
+  * New: m3u8 support
+  * New: 'Color Range' submenu in 'Video' menu
+  * New: chroma upscaler
+  * New: add Spline16/Spline36/Splin36Approx/Lancoz3 interpolators
+  * New: 'Dithering' submenu in video menu
+  * Mod: remove background of playback info and make it opaque and smaller
+  * Fix: change strings 'Inactivated' to 'Deactivated'
+  * Fix: display 'Unavailable' when hardware decoding failed
+  * Fix: add CP1252 and remove ISO-8859-1 which is a subset of CP1252
+  * Fix: cannot disable autodetection for subtitle encoding
+  * Fix: wrong range for interpolator LUT textures
+  * Fix: use app indicator instead of system tray icon in Unity
+  * Fix: wrong video color for non-8bit-encoded sources
+  * Fix: wrong chroma location
+
+0.7.10
+
+  * New: 16:10 aspect ratio for wide monitors
+  * New: message for showing/hiding subtitle
+  * New: 'Interpolator' submenu in video menu
+  * New: internal subtitles are not scaled anymore which brings better quality
+  * Mod: display CPU usage as integer
+  * Mod: use software volume always
+  * Mod: remove 'Always' menu in 'Deinterlace'
+  * Mod: make 'Auto' default deinterlacer mode
+  * Fix: some typo (Corrected audio spelling)
+  * Fix: draw subtitles in only needed parts
+  * Fix: wrong track number (started from 2)
+  * Fix: show/hide subtitle didn't work
+  * Fix: crash when GTK+ style is loaded with some locales
+  * Fix: crash on startup in some locales
+  * Fix: crash when no va-vpp exists
+  * Fix: Disable OpenGL deinterlacer when VA-API deinterlacer is activated
+  * Fix: do not hide internal subtitles on pause
+  * Fix: couldn't take snapshot when paused
+  * Fix: ocassional crash on changing media files when H/W acc. is activated
+  
+0.7.9
+
+  * New: 'Deinterlace' submenu in 'Video' menu
+  * New: options for hardware accleration, deinterlace
+  * New: options for default cache and minimum cache
+  * New: options for audio output driver, software volume, clipping method
+  * New: more verbose playback info (output format conversion/audio output driver)
+  * New: more specific descriptions for H/W Acc. and volumn normalizer in playback info
+  * New: supports for non-8-bits planar 4:2:0 formats (9/10/12/14/16-bits)
+  * New: supports for 32bit signed integer type audio samples
+  * New: trp/tp/ts file extensions are selectable
+  * New: (Linux) hardware accelerated deinterlacer
+  * New: 'CMPLAYER_MPV_OPTIONS' environment value for support mpv's options
+  * Mod: change faster/slower to seek forward/backward in 'modern' skin
+  * Mod: disable volume normalizer by default
+  * Fix: update audio/video information when skin is reloaded
+  * Fix: pass through audio data when modification is not needed
+  * Fix: remove executable argument in message from other instance
+  * Fix: occasional freezing when tab key is pressed
+  * Fix: wrong state of player in skins
+  * Fix: cannot open media from file manager
+  * Fix: start time was fixed to zero
+  * Fix: (OS X) wrong Qt library path
+  * Fix: (OS X) preserve stays-on-top state when full screen mode is changed
+  * Fix: (OS X) wrong width/height with VDA which causes distorted or painted-out picture
+  * Fix: (OS X) VDA cannot handle interlaced formats (workaround: just disable it)
+  * Fix: (OS X) drag-and-drop didn't be accepted
+  * Fix: (OS X) cannot set a shortcut to an arrow key with modifiers
+
+0.7.8
+
+  * Mod: remove '=' in --open and --action (e.g., --action play/pause not --action=play/pause)
+  * Fix: cannot control audio of format unmatched
+  * Fix: playlist and history located in wrong place on resized or initially shown
+  * Fix: 'disable screensaver' didn't work in OS X
+  * Fix: occasional black out of video when new media is played
+  * Fix: cannot parse path which containts '~'
+  * Fix: add a borderline to messagebox
+  * Fix: hide empty messagebox on executed
+
+0.7.7
+
+  * New: playback speed in playback information
+  * New: 'Clear' menu in history
+  * New: context menu for history on right click
+  * New: undo/redo for some actions (e.g., playback speed, volume etc.)
+  * New: fallback to software decoding when hw. acc. failed
+  * New: buffer length option for volume normalzer
+  * New: supports BT.709 and SMPTE 420M colorspace
+  * New: supports fullrange YCbCr format
+  * New: supports flipped frame
+  * New: display messagebox on loading or error
+  * Mod: remove remap luma filter
+  * Mod: enlarge location font in playlist
+  * Mod: remove scheme(file://) of location for local file 
+  * Mod: better performance of hardware decoding
+  * Mod: default options for volume normalizer are changed
+  * Fix: crash on saving preferences
+  * Fix: WM_CLASS and WM_NAME for windows
+  * Fix: broken SubRip subtitle(srt) support
+  * Fix: cannot reach the scrollbar of history and playlist in fullscreen mode
+  * Fix: internal subtitles don't move with video
+  * Fix: couldn't save & restore aspect ratio and crop state
+  * Fix: smooth volume normalization
+  * Fix: clipping color property values in [-1, 1]
+  * Fix: cannot select images in open folder dialog
+  * Fix: some filters weren't applied immediately
+  
+0.7.6
+
+  * New: option to show logo or fill color
+  * New: remember the visibilities of tools
+  * New: add horizontal scrollbar to playlist
+  * New: OSD options on actions and window resizing in 'Behaviours' tab
+  * Fix: cannot open a file whose name contains special characters by drop
+  * Fix: missing WM_CLASS
+
+0.7.5
+
+  * New: introduce OSD options in 'Behaviours' tab
+  * New: '--action=%ID%' command where %ID% can be confirmed in keyboard shortcut option
+  * New: '--wake-up' command to activate bomi window
+  * New: libass support
+  * Mod: subtitle file list and subtitle track list is unified
+  * Mod: '--open=%FILE%' command to open a file
+  * Fix: some translations(thanks to Willem)
+  * Fix: cannot handle multiple parts of internal subtitles
+  * Fix: missing X-Window properties: WM_CLASS, WM_NAME
+  * Fix: crash on deselecting of a subtitle
+  * Fix: wrong color and size of internal subtitles
+  * Fix: inoccasional crash when subtitle rendered
+  * Fix: terminated when hwacc is enabled
+  * Fix: possible wrong stride when hwacc is enabled
+
+0.7.4
+
+  * Fix: Disabling screensaver in gnome
+
+0.7.3
+
+  * Fix: 'Open from file manager' and 'Open by drag-and-drop' options weren't saved
+  * Fix: Sometimes auto-pause and replay on hiding and showing fails
+  * Fix: Wrong behavior on opening media when minimized
+  * Fix: Wrong window title when the location is invalid
+  * Fix: Wrong format comparision which causes video torn
+  * Fix: Keep the volume when media changed
+  * Fix: No audio when audio track changed
+  * Fix: Show application icon when the window reopen
+  * New: Audio track circulation
+  * New: Keyboard shortcut preset and Movist preset
+  * New: Playlist menu
+  * New: Adjust audio sync delay
+  * New: Lion-style fullscreen can be disabled
+
+0.7.2
+
+  * Fix: wrong character display of subtitle when new line characters exist in a paragraph
+  * Fix: workaround for the issue that Command + Q is disabled sometimes in OS X
+  * New: image display features and related options
+  * New: restore the window geometry on execution
+  * New: restore floating controls in skin on execution
+  * New: render subtitle in separated thread which makes the playback smoother
+  * New: 'Copy to Clipboard' in snapshot dialog
+  * New: 'Open Folder' in 'Open' menu
+
+0.7.1
+
+  * Fix: keep the preferences of subtitle style and locale settings
+  * Fix: clear subtitles when new media open
+  * Fix: Remap Luma(whose previous name is Adjust Contrast) filter works now.
+  * Fix: Wrong playtime percentage in play information
+
+0.7.0
+
+  * New skin: modern
+  * Tempo scaler auido filter is enabled
+  * Volume normalizer is configurable
+  * Change decoder from libav to ffmpeg: much better file handling
+  * Change backend from mplayer2 to mpv: better maintanance
+  * Obsolate DVD menu support
+  * Upgrade Qt to version 5: better performance
+  * History and playlist is embedded in video screen
+  * Supports High resolution display(like Retina display)  (#11)
+  * Add m4v and m2v suffix for media files (#12)
+  * Screensaver in Linux can be disabled properly (#16)
+  * Fix random suspension problem (#8, #10)
+  * Better handling for fullscreen (#7, #13)
+  * Fix to keep the window style when reopen preferences
+
+0.6.2
+
+- Bug fix
+  * Wrong stride of video frame
+  * Wrong behavior when mouse moving in fullscreen mode
+  * Wrong compile option which causes crash in 32bit mode (Linux)
+
+0.6.1
+
+- Improvement
+  * Add open mode for 'from file manager'
+  and 'by drag and drop'
+  * Add auto-exit and auto-shutdown
+  when playlist finished
+
+- Bug fix
+  * Wrong parsing font color in subtitle
+  * Crash when open a dialog after playing
+  * Now bomi ignores the config files of mplayer
+
+0.6.0
+
+- Improvement
+  * Seek to non-keyframe position
+  * Hardware-accelerated decoding
+  * Ruby tag in subtitle formatting
+  * Snap to right side of the monitor
+  when the window excesses the screen
+  by being enlarged - patched by Handrake
+  * Drop-frame
+  * Line spacing for subtitle
+  * Proxy icon for OS X
+  * Separate the video rendering from main GUI thread
+
+0.5.4
+
+- Improvement
+  * Delete window size 25%, 50% menus and add 'proper size' menu
+  * Add 'screen alignment' menu
+  * Add 'screen position' menu
+  * Save the state of video color and filters
+
+- Bug fix
+  * Freezed when SubRip(srt) subtitle is open
+  * Filp filters were not ignored when 'ignore all filters' menu was checked
+  * Mouse cursor was not visible when moving on control panel in fullscreen mode
+
+0.5.3
+
+- 개선 사항
+  * 비디오 오버레이 선택 가능
+  * 볼륨 평준화 관련 옵션 추가
+  * 자막단위 탐색 추가
+  * 픽스맵 오버레이 성능 약간 향상
+
+- 버그 수정
+  * (Linux)창 크기 조절시 화면이 멈추는 문제 해결(Never use framebuffer object overlay)
+  * 볼륨 평준화가 제대로 작동하지 않는 문제 해결
+
+0.5.2
+
+- 개선 사항
+  * CPU 사용량이 약간 줄어듬
+  * 효과->필터 명칭 변경
+  * 명암 조절 필터 추가
+  * 자동 명암 필터 추가
+  * 모든 필터 무시 메뉴 추가
+  * 자막 상단/하단 정렬 추가
+  * 자막 레터박스/비디오 출력 추가
+  * 환경설정 레이아웃 및 디자인 변경
+  * 자막 그림자 출력 및 관련 설정 추가
+
+- 버그 수정
+  * 전체화면 전환시 끊기는 문제 해결
+  * 다중 자막 출력시 앞의 자막이 뒤 자막의 색을 덮어쓰는 문제 해결
+
+0.5.1
+
+  * 비디오 효과 추가
+  * 재생시 항상 위 개선(Linux)
+
+0.5.0
+
+  * VLC 기반으로 재설계
+  * OS X 지원 추가
+  * 자막 보기 기능 추가
+  * 재생시 항상 위 개선(OS X)
+
+0.4.0
+
+  * GStreamer 기반으로 재설계
+
+0.3.2 (r403-r434)
+
+- 개선 사항
+  * DVD 열기용 .desktop 파일 추가
+  * 재생 엔진별 환경 설정 기능 추가(mplayer 재생엔진의 환경변수를 이용한 설정 삭제)
+  * 중단된 파일 기록 최대 갯수 옵션 및 보관 일수 옵션 추가
+  * 이전에 중단된 파일일 경우, 중단된 시점부터 재생할지 물어보도록 수정
+  * 빌드 및 설치 스크립트 옵션 변경
+  * 현재 자막을 별도의 창으로 표시하는 기능 추가
+  * (xine) OpenGL 및 X Video 소프트웨어 렌더러 추가
+
+- 버그 수정
+  * 최근 재생 목록으로 재생이 되지 않는 버그 수정
+  * '창이 닫힐 때 종료하는 대신 창을 숨기기' 옵션이 활성화되지 않는 버그 수정
+  * 프레임 기반 자막을 시간 기준으로 찾는 버그 수정
+  * (xine) 최초 실행시 재생엔진이 제대로 선택되지 않는 버그 수정
+
+
+0.3.1
+
+-개선 사항
+  * 드래그 & 드랍 동작 변경(재생목록, 자막파일도 드랍 가능)
+  * 히스토리 위젯을 툴박스에 추가
+  * 즐겨찾기 위젯을 툴박스에 추가
+  * 툴박스의 타이틀에 현재 위젯 이름을 표시하도록 수정
+  * 자동 탐지된 인코딩이 EUC-KR일 경우 CP949를 이용하도록 수정
+  * 툴박스에 포커스가 있는 상태에서도 툴박스 닫기 단축키가 적용되도록 수정
+
+- 버그 수정
+  * 화면이 깜빡이거나 회색 화면이 나타나는 버그 수정
+  * 패널 레이아웃을 기억하도록 수정
+  * 창을 숨길때 툴박스도 같이 숨기도록 수정
+
+
+0.3.0
+
+- 개선 사항
+  * 자막 인코딩 자동 탐지 추가
+  * 재생중 화면보호기 끄기 옵션 추가
+  * 툴박스 구현 및 플레이리스트를 툴박스로 이동
+  * 플레이리스트 버튼을 컨텍스트 메뉴로 대체
+  * 비디오 색상 이퀄라이저 구현
+  * 패널 디자인 변경
+  * CMPLAYER_MPLAYER_OPTION 환경변수로 MPlayer 재생엔진에 실행 옵션을 추가할 수 있도록 수정
+  * 48x48 어플리케이션 아이콘 추가
+
+- 버그 수정
+  * 일부 값이 범위를 초과하여 설정되는 문제 수정
+  * 동일한 확장자의 MircroDVD, TMPlayer 자막을 구분 못하는 문제 수정
+
+
+0.2.8
+
+- 개선 사항
+  * 환경 설정의 재생엔진 옵션 삭제
+  * 재생엔진 메뉴 선택 기억
+
+- 버그 수정
+  * 렌더러 선택이 기억되지 않는 버그 수정
+  * 재생목록을 이용한 재생이 정상적으로 작동하지 않는 문제 수정
+
+0.2.7
+
+- 개선 사항
+  * 어플리케이션 아이콘 작성
+  * 시스템 트레이 아이콘 구현 및 관련 옵션 추가
+  * 단일 어플리케이션 구현 및 관련 옵션 추가
+  * volume normalization 구현 및 관련 옵션 추가
+  * OSD 출력 내용을 재생 정보 창에도 표시하도록 변경
+  * url로부터 재생목록을 불러올수 있도록 수정
+  * 도킹위젯 전환 개선
+  * 소프트웨어 이퀄라이저 구현 및 관련 옵션 추가
+  * 재생 엔진 경로 설정 삭제
+  * TMPlayer 자막 지원
+  * MicroDVD 자막 지원
+  * 자막 싱크 방향을 반대로 수정
+  * 도킹 위젯의 크기를 기억하도록 수정
+  * 재생 목록의 드래그 & 드랍 구현
+  * 재생 목록에서 항목을 더블 클릭으로 재생하도록 변경
+  * 재생목록의 삭제 버튼으로 선택된 항목을 모두 삭제하도록 변경
+  * 화면 메뉴에 25% 크기 추가
+  * 자막 메뉴에 싱크 초기화 메뉴 추가
+  * 스냅샷 기능 구현
+  * 정지상태에서 로고를 표시
+  * 렌더러 변경 실패시 이전 렌더러로 돌아가도록 수정
+  * 일본어 번역 추가
+
+- 버그 수정
+  * 처음 실행시 비디오/오디오 렌더러가 선택되어 있지 않던 문제를 수정
+  * 메뉴 단축키가 저장되지 않는 문제 수정
+  * 도킹위젯을 닫을때 메인윈도우가 리사이즈되지 않는 문제 수정
+  * 자막 스케일 변경후 바로 적용되지 않는 문제 수정
+  * 자막 크기가 적용되지 않는 문제 수정
+  * OSD 글자 크기가 적용되지 않는 문제 수정
+  * 자막파일을 열었을때 바로 반영되지 않는 문제 수정
+  * 자막내용이 비었을 때 이전 자막 내용이 표시되던 문제를 수정
+  * '재생 중일 때만 항상위'가 활성화되있을 때, 재생 파일 변경시 창이 깜빡이는 문제 수정
+
+
+0.2.6
+
+- 개선 사항
+  * URL 열기 기능 구현
+  * 최소화시 비디오 재생중에만 일시 정지 옵션 추가
+  * 구간 반복 기능 구현
+  * 재생 목록 전환 메뉴 최상위 메뉴에 추가
+  * 메인윈도우 타이틀 지정
+  * 속도 빠르게 단축키에 = 추가
+  * 조작 단계 최소값을 0보다 크게 수정
+  * 파일을 열때, 마지막으로 연 파일의 경로를 표시하도록 수정
+  * 자막 파일을 열때, 현재 재생중인 파일의 경로를 표시하도록 수정
+  * 커서가 일정 시간 동안 움직이지 않을 때 숨기기 기능 구현 및 관련 옵션 추가
+  * 버전 정보 표시 메뉴 및 다이얼로그 구현
+  * 설치 스크립트 개선 및 기본 설치 경로 변경(install.txt 참조)
+
+- 버그 수정
+  * 비디오 속성이 적용되지 않는 문제 수정
+  * 재생엔진 변경시 볼륨이 초기화되는 문제를 수정
+  * 명령행 인자로 상대경로가 전달될 경우 인식하지 못하던 문제를 수정
+  * 정지후 재생 시작시 볼륨, 자막 싱크, 자막 위치 등이 초기화되는 문제를 수정
+  * 렌더러가 제대로 갱신되지 않는 문제 수정
+  * 속도 초기화시 OSD가 표시되지 않는 문제 수정

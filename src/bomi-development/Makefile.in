@@ -1,0 +1,137 @@
+os := @os@
+install_file := install -m 644
+install_exe := install -m 755
+install_dir := install -d -m 755
+install_all := sh install_dir.sh
+pkg_config_path := @PKG_CONFIG_PATH@
+
+prefix := @prefix@
+qmake := @qmake@ BOMI_RELEASE=1
+lrelease := @lrelease@
+bin_dir := @bindir@
+DATADIR := @datadir@
+comp_dir := @compdir@
+man_dir := @mandir@
+icon_dir := @icondir@
+app_dir := @appdir@
+action_dir := @actiondir@
+skin_dir := @skindir@
+trans_dir := @transdir@
+import_dir := @importdir@
+njobs := @parallel@
+qt_sdk := @qtsdk@
+macdeployqt := @macdeployqt@
+
+export PATH := @PATH@
+
+ifeq ($(os),osx)
+	bomi_exec := bomi
+	bomi_exec_dir := build/$(bomi_exec).app/Contents/MacOS
+else
+	bomi_exec := bomi
+	bomi_exec_dir := build/$(bomi_exec)
+endif
+
+bomi_exec_path := $(bomi_exec_dir)/$(bomi_exec)
+
+bomi: build/$(bomi_exec_path)
+
+build/$(bomi_exec_path): mpv skins imports translations
+	cd src/bomi && $(qmake) bomi.pro && $(MAKE) -j$(njobs) release
+ifeq ($(os),osx)
+	cp -r build/skins $(bomi_exec_dir)
+	cp -r build/imports $(bomi_exec_dir)
+endif
+
+bomi-bundle: bomi
+	cp -r $(qt_sdk)/qml/QtQuick.2 $(bomi_exec_dir)/imports
+	$(install_dir) $(bomi_exec_dir)/imports/QtQuick
+	cp -r $(qt_sdk)/qml/QtQuick/Controls $(bomi_exec_dir)/imports/QtQuick
+	cp -r $(qt_sdk)/qml/QtQuick/Layouts $(bomi_exec_dir)/imports/QtQuick
+	cp -r /usr/local/Cellar/libquvi/0.4.1/libquvi-scripts/share/libquvi-scripts/lua $(bomi_exec_dir)
+#	rm `find $(bomi_exec_dir) -name '*_debug.dylib'`
+#	cd build && $(macdeployqt) $(bomi_exec).app
+#	./fix-dep
+	cd build && $(macdeployqt) $(bomi_exec).app -dmg
+
+build/lib/libmpv.a: build-mpv
+	@./build-mpv
+
+mpv: build/lib/libmpv.a
+
+build/skins: build
+	$(install_dir) build/skins
+
+build/imports: build
+	$(install_dir) build/imports
+
+build/translations: build
+	$(install_dir) build/translations
+
+skins: build/skins
+	$(install_all) src/bomi/skins build/skins
+
+imports: build/imports
+	$(install_all) src/bomi/imports build/imports
+
+translations: build/translations
+	$(lrelease) src/bomi/translations/*.ts
+	$(install_file) src/bomi/translations/*.qm build/translations
+
+build:
+	$(install_dir) build
+
+clean:
+	-cd src/mpv && ./waf uninstall
+	-cd src/mpv && ./waf clean
+	-cd src/mpv && ./waf distclean
+	-cd src/bomi && make clean
+	-cd src/bomi && rm -rf Makefile* debug release
+	-rm -rf build/bomi*
+	-rm -rf build/bomi*
+	-rm -rf build/skins
+	-rm -rf build/imports
+	-rm -f bomi.1.gz
+
+install: bomi
+ifeq ($(os),linux)
+	$(install_dir) $(DEST_DIR)$(bin_dir)
+	$(install_dir) $(DEST_DIR)$(app_dir)
+	$(install_dir) $(DEST_DIR)$(action_dir)
+	$(install_dir) $(DEST_DIR)$(comp_dir)
+	$(install_dir) $(DEST_DIR)$(man_dir)/man1
+	$(install_dir) $(DEST_DIR)$(icon_dir)/16x16/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/22x22/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/24x24/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/32x32/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/48x48/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/64x64/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/128x128/apps
+	$(install_dir) $(DEST_DIR)$(icon_dir)/256x256/apps
+	$(install_dir) $(DEST_DIR)$(skin_dir)
+	$(install_dir) $(DEST_DIR)$(import_dir)
+	$(install_dir) $(DEST_DIR)$(trans_dir)
+#	$(install_dir) $(DEST_DIR)$(icon_dir)/scalable/apps
+	$(install_exe) build/$(bomi_exec) $(DEST_DIR)$(bin_dir)
+	$(install_file) bomi.desktop $(DEST_DIR)$(app_dir)
+	$(install_file) bomi-opendvd.desktop $(DEST_DIR)$(action_dir)
+	$(install_file) bomi.completion $(DEST_DIR)$(comp_dir)/bomi
+	gzip -cf bomi.1 > bomi.1.gz
+	$(install_file) bomi.1.gz $(DEST_DIR)$(man_dir)/man1/bomi.1.gz
+	$(install_file) icons/bomi16.png $(DEST_DIR)$(icon_dir)/16x16/apps/bomi.png
+	$(install_file) icons/bomi22.png $(DEST_DIR)$(icon_dir)/22x22/apps/bomi.png
+	$(install_file) icons/bomi24.png $(DEST_DIR)$(icon_dir)/24x24/apps/bomi.png
+	$(install_file) icons/bomi32.png $(DEST_DIR)$(icon_dir)/32x32/apps/bomi.png
+	$(install_file) icons/bomi48.png $(DEST_DIR)$(icon_dir)/48x48/apps/bomi.png
+	$(install_file) icons/bomi64.png $(DEST_DIR)$(icon_dir)/64x64/apps/bomi.png
+	$(install_file) icons/bomi128.png $(DEST_DIR)$(icon_dir)/128x128/apps/bomi.png
+	$(install_file) icons/bomi256.png $(DEST_DIR)$(icon_dir)/256x256/apps/bomi.png
+#	$(install_file) icons/bomi.svg $(DEST_DIR)$(icon_dir)/scalable/apps/bomi.svg
+	$(install_all) build/skins $(DEST_DIR)$(skin_dir)
+	$(install_all) build/imports $(DEST_DIR)$(import_dir)
+	$(install_file) build/translations/* $(DEST_DIR)$(trans_dir)
+else
+	mv build/$(bomi_exec).app $(DEST_DIR)$(prefix)
+endif
+
+.PHONY: bomi mpv clean skins imports install

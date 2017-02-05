@@ -1,0 +1,42 @@
+#!/bin/bash
+
+args="--prefix=../../build --disable-manpage-build --enable-libmpv-static --disable-pdf-build \
+  --disable-vf-dlopen-filters --disable-test --disable-cplayer --disable-rubberband \
+  --enable-iconv --disable-termios --disable-shm --disable-libguess --disable-drm \
+  --enable-encoding --enable-libbluray --enable-dvdread --enable-dvdnav \
+  --disable-enca --disable-ladspa --disable-libbs2b --disable-lcms2 --enable-libswresample --disable-libavfilter \
+  --disable-libavdevice --disable-libavresample --disable-vapoursynth --disable-vapoursynth-lazy \
+  --disable-sdl2 --disable-sdl1 --disable-rsound --disable-sndio --disable-openal \
+  --disable-win32 --disable-x11 --disable-cocoa --disable-wayland --disable-xss --disable-xext \
+  --disable-xv --disable-xinerama --disable-xrandr --enable-gl --enable-gl-dummy \
+  --disable-vaapi-vo --disable-vdpau-vo --disable-vaapi-vpp --disable-caca \
+  --disable-dvb --disable-dvbin --disable-jpeg --disable-direct3d --disable-vda-gl \
+  --disable-tv --disable-tv-v4l2 --disable-libv4l2 --disable-pvr --disable-audio-input --disable-lua \
+  @mpv_args@"
+
+os=@os@
+njobs=@parallel@
+export PATH="@PATH@"
+export PKG_CONFIG_PATH="@PKG_CONFIG_PATH@"
+export CC="@cc@"
+
+py=
+if [ "$os" = "win" ]; then
+	py=/usr/bin/python
+	args="$args --enable-win32-internal-pthreads"
+fi
+
+orig="$(pwd)"
+
+cd src/mpv && $py ./waf clean; $py ./waf distclean; $py ./waf configure $args && \
+$py ./waf build -j $njobs && $py ./waf install
+
+cd "$orig"
+
+if [ "$os" = "win" ]; then
+	install -d build/lib/pkgconfig/
+	mv -f build/bin/pkgconfig/mpv.pc build/lib/pkgconfig/
+	mv -f build/bin/libmpv.a build/lib/
+	sed -i 's_build/bin_build/lib_' build/lib/pkgconfig/mpv.pc
+	rmdir build/bin/pkgconfig
+fi
